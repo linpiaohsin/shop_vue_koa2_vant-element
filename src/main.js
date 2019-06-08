@@ -1,43 +1,45 @@
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-
-import Cookies from 'js-cookie'
-
-import 'normalize.css/normalize.css' // A modern alternative to CSS resets
-
-import Element from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
-
-import '@/styles/index.scss' // global css
+import App from './App'
+import router from './router'
+import fastClick from 'fastclick'
+import 'style/iconfont/iconfont.css'
+// import 'style/reset.css'
+import 'style/border.css'
 import vant from 'vant'
 import 'vant/lib/index.css'
-import App from './App'
-import store from './store'
-import router from './router'
-
-import i18n from './lang' // Internationalization
-import './icons' // icon
-import './errorLog' // error log
-import './permission' // permission control
-import './mock' // simulation data
-
-import * as filters from './filters' // global filters
-
-Vue.use(Element, {
-  size: Cookies.get('size') || 'medium', // set element-ui default size
-  i18n: (key, value) => i18n.t(key, value)
-})
-
-// register global utility filters.
-Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key])
-})
+import 'babel-polyfill'
+import store from './vuex'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import VueCookies from 'vue-cookies'
+import { Lazyload } from 'vant';
+import { Notify } from 'vant';
+Vue.use(Lazyload,{
+  preLoad: 1.3,
+  error:require('@/assets/img/errImg.png'),
+  loading: require('@/assets/img/loading.gif'),
+  attempt: 1
+});
+Vue.use(VueCookies)
 Vue.use(vant)
-Vue.config.productionTip = false
+Vue.use(ElementUI);
 
+
+Vue.use(Notify);
+fastClick.attach(document.body)
+Vue.config.productionTip = false
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
+// require styles
+import 'swiper/dist/css/swiper.css'
+/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   store,
-  i18n,
-  render: h => h(App)
+  components: { App },
+  template: '<App/>'
 })

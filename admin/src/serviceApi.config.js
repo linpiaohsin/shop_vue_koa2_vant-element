@@ -1,6 +1,6 @@
 const BASEURL = 'https://www.easy-mock.com/mock/5c1b973de09a456c978d20b6/shop/'
-const LOCALURL = 'http://localhost:3000/'
-// const LOCALURL = 'http://47.107.76.115:3000/'
+// const LOCALURL = 'http://localhost:3000/'
+const LOCALURL = 'http://47.107.76.115:3000/'
 const CITY = 'https://www.easy-mock.com/mock/5c3095af44844e21910e8fe4/travel/city'
 const URL ={
 	getShoppngMallInfo : BASEURL+'index',
